@@ -11,7 +11,6 @@
  *    - Checks if mouse clicks over a word
  *
  */
- 
 
 Camera cam;
 CaptureScreen capture;
@@ -20,40 +19,37 @@ Words allWords;
 
 void setup() {
   size(640, 480);
-  
-  capture = new CaptureScreen(this,"novovideo.ogg");
+
+  capture = new CaptureScreen(this, "novovideo.ogg");
   cam = new Camera(this);
   frameRate(capture.fps);
-  
+
   cam.startRecording();
   //capture.startRecording();
-  
-  pie = new CountDownPie(width-100,100,50,50,8);
+
+  pie = new CountDownPie(width-100, 100, 50, 50, 8);
   allWords = new Words();
   allWords.setWords();
   allWords.setStyle();
-  
 }
 
 void draw() {
-  
-    cam.readPixels();
-    //capture.addPixels();
-    pie.drawPie();
-    allWords.drawWords();
-    //allWords.checkMouseOver();
+  cam.readPixels();
+  //capture.addPixels();
+  pie.drawPie();
+  allWords.drawWords();
 }
 
 
 void keyPressed() {
   if (key == ' ') {
     capture.stopRecording();
-    // Quit running the sketch once the file is written
-    exit(); 
+    // Quit running the sketch
+    exit();
   }
 }
 
 
-public void mouseClicked(){
+public void mouseClicked() {
   allWords.checkMouseOver();
 }

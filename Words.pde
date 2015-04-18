@@ -39,7 +39,7 @@ public class Words {
   // Set word style
   public void setStyle() {
     textSize(32);
-    fill(0, 102, 153, 204);
+    fill(255,0,0, 204);
   }
 
   // Draw words on screen
@@ -54,19 +54,19 @@ public class Words {
       //fill(111,50);
       //rect(pos.x,pos.y-word_h,pos.x+word_w,pos.y);
 
-      fill(0);
       text(word, pos.x, pos.y);
     }
   }
 
-  public void checkMouseOver() {
+  public String checkMouseOver() {
 
     PVector pos;
     for (String word : this.words.keySet ()) {
       pos = this.words.get(word);
       if (mouseX>pos.x && mouseX<pos.x+word_w && mouseY>pos.y-word_h && mouseY<pos.y) {
-        println(word);
+        return word;
       }
     }
+    return ""; // no word selected
   }
 }

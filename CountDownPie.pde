@@ -10,31 +10,36 @@ class CountDownPie {
   float counter=0.001;
   float inc=0;
 
+  boolean end=false;
+
   CountDownPie(int _x, int _y, int _w, int _h, float _sec) {
     x = _x;
     y = _y;
     w = _w;
     h = _h;
-
+    end=false;
     sec = _sec;
 
     inc = 360 / (frameRate * sec);
   }
 
-  void drawPie() {
+  public void drawPie() {
     noStroke();
     fill(211);
     arc(this.x, this.y, this.w, this.h, -HALF_PI, -HALF_PI+radians(this.counter), PIE);
     if (this.counter>360) {
       this.counter=0;
-      this.endOfCountDown();
+      this.end = true;
     } else if (counter==0) {
       this.counter+=this.inc;
     } else
       this.counter+=this.inc;
+      
+   
+    
   }
 
-  void endOfCountDown() {
-    println("Finish!");
+  public boolean endOfCountDown() {
+    return this.end;
   }
 }

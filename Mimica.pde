@@ -15,41 +15,54 @@
 Camera cam;
 CaptureScreen capture;
 CountDownPie pie;
+
 Words allWords;
+String selectedWord="";
+
+String[] states = {
+  "displayWords", "preapareToRecord", "startRecord", "recordVideo", "endRecord"
+};
+String currentState = "displayWords";
+
+String path = "words/";
+
+int fps = 12; // This fps is 
 
 void setup() {
   size(640, 480);
+  frameRate(fps);
 
-  capture = new CaptureScreen(this, "novovideo.ogg");
-  cam = new Camera(this);
-  frameRate(capture.fps);
-
-  cam.startRecording();
-  //capture.startRecording();
-
-  pie = new CountDownPie(width-100, 100, 50, 50, 8);
   allWords = new Words();
   allWords.setWords();
   allWords.setStyle();
 }
 
 void draw() {
-  cam.readPixels();
-  //capture.addPixels();
-  pie.drawPie();
-  allWords.drawWords();
-}
 
+  // State DisplayWords
+  if (currentState.compareTo(states[0])==0) {
+    displayWords();
+  }
+  // State Prepare To Record
+  else if (currentState.compareTo(states[1])==0) {
+    preapareToRecord();
+  }
+  // State Start Record
+  else if (currentState.compareTo(states[2])==0) {  
+    startRecording();
+  }
 
-void keyPressed() {
-  if (key == ' ') {
-    capture.stopRecording();
-    // Quit running the sketch
-    exit();
+  // State Record video 
+  else if (currentState.compareTo(states[3])==0) {
+    recordVideo();
+  }
+  // State End Record 
+  else if (currentState.compareTo(states[4])==0) {
+    endRecording();
   }
 }
 
-
+// Checks which word was selected
 public void mouseClicked() {
-  allWords.checkMouseOver();
+  selectedWord = allWords.checkMouseOver();
 }

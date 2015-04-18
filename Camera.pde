@@ -2,6 +2,8 @@
 //
 // Controls camera 
 
+//import codeanticode.gsvideo.*;
+
 public class Camera {
 
   GSCapture cam;
@@ -14,6 +16,11 @@ public class Camera {
   // Starts camera recording
   void startRecording() {   
     cam.start();
+  }
+  
+  // Stops camera recording
+  void stopRecording() {   
+    cam.stop();
   }
 
   // Read pixes from camera and displays on screen.

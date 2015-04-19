@@ -9,32 +9,34 @@
  *    - Draw counter in a pie format.
  *    - Draw words
  *    - Checks if mouse clicks over a word
+ *    - Changes from state to state
  *
  */
+
+import java.io.FilenameFilter;
 
 Camera cam;
 CaptureScreen capture;
 CountDownPie pie;
-
 Words allWords;
 String selectedWord="";
 
-String[] states = {
-  "displayWords", "preapareToRecord", "startRecord", "recordVideo", "endRecord"
-};
+String wordsFolder = "data/activeWords/";
+String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/"; 
+
+String[] states = {"displayWords", "preapareToRecord", "startRecord", "recordVideo", "endRecord"};
 String currentState = "displayWords";
 
-String path = "words/";
-
-int fps = 12; // This fps is 
+int fps = 12;
 
 void setup() {
   size(640, 480);
   frameRate(fps);
+  background(0);
 
   allWords = new Words();
   allWords.setWords();
-  allWords.setStyle();
+
 }
 
 void draw() {
@@ -66,3 +68,10 @@ void draw() {
 public void mouseClicked() {
   selectedWord = allWords.checkMouseOver();
 }
+
+
+final FilenameFilter jpgFilter = new FilenameFilter() {
+  boolean accept(File dir, String name) {
+    return name.toLowerCase().endsWith(".jpg");
+  }
+};

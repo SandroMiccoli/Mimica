@@ -28,7 +28,7 @@ public void startRecording() {
   clearScreen();
   cam = new Camera(this);
   cam.startRecording(); 
-  capture = new CaptureScreen(this, path+selectedWord+"/"+selectedWord+".ogg");
+  capture = new CaptureScreen(this, wordsFolder+selectedWord+"/"+selectedWord+".ogg");
   capture.startRecording();
   currentState=states[3];
 }

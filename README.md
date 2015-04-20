@@ -21,10 +21,12 @@ The following file structure indicates where the content should be placed. The w
     - word5
     - ...
 
-**Add content**
+####Add content
 
-To add content, you simply add a word to the *activeWords* folder and add content in that folder.
+To add content, you simply add a folder of the new word (the name of the folder is the new word) to the *activeWords* folder and add content in that folder.
 
-**Remove content**
+Example: I have contet related to the word **Reflect**, then I simply create a folder named **Reflect** in the *activeWords* folder.
+
+####Remove content
 
 To remove content, simply move the word folder from *activeWords* to *words*.

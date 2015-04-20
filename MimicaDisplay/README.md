@@ -8,5 +8,5 @@ This sketch is responsable for the display of user generated content.
 
 ## Communication between sketches
 
-Each sketch will communicate with each other using MIDI.
+Each sketch will communicate with each other using OSC.
 

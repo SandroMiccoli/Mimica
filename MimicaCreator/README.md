@@ -2,6 +2,10 @@
 
 An interactive installation that users record themselves trying to act a word using their bodies. Users can also see, on another screen, content related to each word.
 
+## MimicaCreator
+
+This sketch is responsible for the creation of videos and where the content is stored.
+
 ### File structure
 
 The following file structure indicates where the content should be placed. The words in the *activeWords* folder will be available for the users to select. The folder *words* is used only for organizing other content.

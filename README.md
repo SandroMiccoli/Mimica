@@ -21,11 +21,11 @@ The following file structure indicates where the content should be placed. The w
     - word5
     - ...
 
-####Add content
+####Add content for the user
 
 To add content, you simply add a folder of the new word (the name of the folder is the new word) to the *activeWords* folder and add content in that folder.
 
-Example: I have contet related to the word **Reflect**, then I simply create a folder named **Reflect** in the *activeWords* folder.
+Example: I have content related to the word **Reflect**, then I simply create a folder named **Reflect** in the *activeWords* folder.
 
 ####Remove content
 

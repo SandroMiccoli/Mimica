@@ -29,7 +29,7 @@ public class Words {
 
   // Searches for folders in the Words folder.
   // Each folder represents a word.
-  public void setWords() {
+  public void setWordsFromFolder() {
 
     folder = new java.io.File(dataPath(absoluteWordsFolder));
     File[] folders = folder.listFiles(folderFilter);
@@ -46,6 +46,10 @@ public class Words {
         this.words.put(folderName, new PVector(column*2, line*(i-5+1)));
     }
 
+  }
+  
+  public void addWord(String word, PVector pos){
+      this.words.put(word,pos);
   }
 
   // Set word style

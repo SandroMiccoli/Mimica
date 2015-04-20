@@ -8,19 +8,23 @@ public class CaptureScreen {
 
   public int fps = 12;
   private String fileName;
-
+  private String filePath;
   GSMovieMaker movie;
 
   // Constructor 
-  CaptureScreen(processing.core.PApplet parent, String f) {
-    fileName = f;
-    movie = new GSMovieMaker(parent, width, height, fileName, GSMovieMaker.THEORA, GSMovieMaker.MEDIUM, fps);
-    movie.setQueueSize(50, 10);
+  CaptureScreen(processing.core.PApplet parent, String path, String f) {
+    
+    File folder = new java.io.File(dataPath(projectFolder+path));
+    File[] folders = folder.listFiles();
+    this.filePath = path;
+    this.fileName = folders.length+".ogg";
+    this.movie = new GSMovieMaker(parent, width, height, this.filePath+this.fileName, GSMovieMaker.THEORA, GSMovieMaker.MEDIUM, fps);
+    this.movie.setQueueSize(50, 10);
   }
 
   // Starts recording of the movie
   void startRecording() {
-    movie.start();
+    this.movie.start();
   }
 
   // Adds all pixels to a frame in the video
@@ -31,7 +35,15 @@ public class CaptureScreen {
 
   // Stops recording
   void stopRecording() {
-    movie.finish();
+    this.movie.finish();
+  }
+  
+  public String getFileName(){
+    return this.fileName;
+  }
+  
+  public String getFullPath(){
+    return projectFolder+filePath+fileName; 
   }
 
   // Prints debug information

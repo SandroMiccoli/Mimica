@@ -9,7 +9,7 @@ public void displayWords() {
     pie = new CountDownPie(width/2, height/2, width/2, width/2, 5);
 
     println(selectedWord);
-    
+
     currentState=states[1];
   }
 }
@@ -28,7 +28,7 @@ public void startRecording() {
   clearScreen();
   cam = new Camera(this);
   cam.startRecording(); 
-  capture = new CaptureScreen(this, wordsFolder+selectedWord+"/"+selectedWord+".ogg");
+  capture = new CaptureScreen(this, wordsFolder+selectedWord+"/", selectedWord);
   capture.startRecording();
   currentState=states[3];
 }
@@ -49,6 +49,34 @@ public void endRecording() {
   cam.stopRecording();
   capture.stopRecording();
   clearScreen();
-  selectedWord="";
-  currentState=states[0];
+  currentState=states[5];
+}
+
+public void redoOrSubmit() {
+  redoOrSubmitMenu.drawWords();
+
+  if (menuChoice.compareTo("Gravar novamente")==0) {
+    clearScreen();
+    deleteFile(capture.getFullPath());
+    menuChoice="";
+    currentState=states[1];
+  } else if (menuChoice.compareTo("Trocar palavra")==0) {
+    clearScreen();
+    deleteFile(capture.getFullPath());
+    selectedWord="";
+    menuChoice="";
+    currentState=states[0];
+  } else if (menuChoice.compareTo("Enviar vídeo")==0) {
+    clearScreen();
+    selectedWord="";
+    menuChoice="";
+    currentState=states[0];
+  }
+}
+
+public void createMenu() {
+  redoOrSubmitMenu = new Words();
+  redoOrSubmitMenu.addWord("Gravar novamente", new PVector(150, 100));
+  redoOrSubmitMenu.addWord("Trocar palavra", new PVector(150, 200));
+  redoOrSubmitMenu.addWord("Enviar vídeo", new PVector(150, 300));
 }

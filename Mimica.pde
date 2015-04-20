@@ -21,10 +21,20 @@ CountDownPie pie;
 Words allWords;
 String selectedWord="";
 
+Words redoOrSubmitMenu;
+String menuChoice="";
+
 String wordsFolder = "data/activeWords/";
 String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/"; 
 
-String[] states = {"displayWords", "preapareToRecord", "startRecord", "recordVideo", "endRecord"};
+String[] states = {
+                    "displayWords", 
+                    "preapareToRecord", 
+                    "startRecord", 
+                    "recordVideo", 
+                    "endRecord", 
+                    "redoOrSubmit"
+                  };
 String currentState = "displayWords";
 
 int fps = 12;
@@ -35,7 +45,9 @@ void setup() {
   background(0);
 
   allWords = new Words();
-  allWords.setWords();
+  allWords.setWordsFromFolder();
+  
+  createMenu();
 
 }
 
@@ -62,11 +74,19 @@ void draw() {
   else if (currentState.compareTo(states[4])==0) {
     endRecording();
   }
+  // State Redo, Change word or Submit 
+  else if (currentState.compareTo(states[5])==0) {
+    redoOrSubmit();
+  }
 }
 
 // Checks which word was selected
 public void mouseClicked() {
-  selectedWord = allWords.checkMouseOver();
+  if (currentState.compareTo(states[0])==0)
+    selectedWord = allWords.checkMouseOver();
+  else if (currentState.compareTo(states[5])==0)
+    menuChoice = redoOrSubmitMenu.checkMouseOver();
+  
 }
 
 

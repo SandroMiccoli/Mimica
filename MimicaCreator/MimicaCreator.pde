@@ -3,6 +3,8 @@
  *
  * Created by Sandro Miccoli and Joao Pedro Schneider
  *
+ * Mimica Creator
+ *
  * Functions:
  *    - Capture image from camera, Kinect or PS3 camera.
  *    - Create a video from screen output.

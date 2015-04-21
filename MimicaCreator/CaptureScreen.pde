@@ -38,6 +38,12 @@ public class CaptureScreen {
     this.movie.finish();
   }
   
+  //Saves the name and the path of the video on the String
+  String sendFileNameToPlay(){
+    String pathAndName= this.filePath+ this.fileName;
+    return pathAndName;
+  }
+  
   public String getFileName(){
     return this.fileName;
   }

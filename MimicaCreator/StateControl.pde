@@ -48,8 +48,12 @@ public void recordVideo() {
 public void endRecording() {
   cam.stopRecording();
   capture.stopRecording();
+   
+  
   clearScreen();
   currentState=states[5];
+  
+  
 }
 
 public void redoOrSubmit() {
@@ -69,9 +73,14 @@ public void redoOrSubmit() {
   } else if (menuChoice.compareTo("Enviar vídeo")==0) {
     clearScreen();
     selectedWord="";
-    menuChoice="";
+    menuChoice="";  
     currentState=states[0];
-  }
+  
+  // Sends the Osc Message
+  //*******
+   oscMessageToPlay();
+  //*******
+}
 }
 
 public void createMenu() {

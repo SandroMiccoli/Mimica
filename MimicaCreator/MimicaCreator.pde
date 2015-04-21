@@ -27,6 +27,7 @@ Words redoOrSubmitMenu;
 String menuChoice="";
 
 String wordsFolder = "data/activeWords/";
+//String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/"; 
 
 String[] states = {
@@ -45,6 +46,11 @@ void setup() {
   size(640, 480);
   frameRate(fps);
   background(0);
+
+//*******
+oscP5 = new OscP5 (this, 5001);
+myRemoteLocation = new NetAddress("127.0.0.1", 5002);
+//*******
 
   allWords = new Words();
   allWords.setWordsFromFolder();

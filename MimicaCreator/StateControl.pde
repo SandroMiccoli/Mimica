@@ -48,12 +48,10 @@ public void recordVideo() {
 public void endRecording() {
   cam.stopRecording();
   capture.stopRecording();
-   
-  
+
+
   clearScreen();
   currentState=states[5];
-  
-  
 }
 
 public void redoOrSubmit() {
@@ -75,12 +73,9 @@ public void redoOrSubmit() {
     selectedWord="";
     menuChoice="";  
     currentState=states[0];
-  
-  // Sends the Osc Message
-  //*******
-   oscMessageToPlay();
-  //*******
-}
+    // Sends the Osc Message
+    oscMessageToPlay();
+  }
 }
 
 public void createMenu() {

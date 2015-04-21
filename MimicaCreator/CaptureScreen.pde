@@ -13,7 +13,7 @@ public class CaptureScreen {
 
   // Constructor 
   CaptureScreen(processing.core.PApplet parent, String path, String f) {
-    
+
     File folder = new java.io.File(dataPath(projectFolder+path));
     File[] folders = folder.listFiles();
     this.filePath = path;
@@ -37,19 +37,19 @@ public class CaptureScreen {
   void stopRecording() {
     this.movie.finish();
   }
-  
+
   //Saves the name and the path of the video on the String
-  String sendFileNameToPlay(){
+  String sendFileNameToPlay() {
     String pathAndName= this.filePath+ this.fileName;
     return pathAndName;
   }
-  
-  public String getFileName(){
+
+  public String getFileName() {
     return this.fileName;
   }
-  
-  public String getFullPath(){
-    return projectFolder+filePath+fileName; 
+
+  public String getFullPath() {
+    return projectFolder+filePath+fileName;
   }
 
   // Prints debug information

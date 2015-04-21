@@ -28,16 +28,16 @@ String menuChoice="";
 
 String wordsFolder = "data/activeWords/";
 //String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
-String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/"; 
+String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
 String[] states = {
-                    "displayWords", 
-                    "preapareToRecord", 
-                    "startRecord", 
-                    "recordVideo", 
-                    "endRecord", 
-                    "redoOrSubmit"
-                  };
+  "displayWords", 
+  "preapareToRecord", 
+  "startRecord", 
+  "recordVideo", 
+  "endRecord", 
+  "redoOrSubmit"
+};
 String currentState = "displayWords";
 
 int fps = 12;
@@ -47,16 +47,15 @@ void setup() {
   frameRate(fps);
   background(0);
 
-//*******
-oscP5 = new OscP5 (this, 5001);
-myRemoteLocation = new NetAddress("127.0.0.1", 5002);
-//*******
+  //*******
+  oscP5 = new OscP5 (this, 5001);
+  myRemoteLocation = new NetAddress("127.0.0.1", 5002);
+  //*******
 
   allWords = new Words();
   allWords.setWordsFromFolder();
-  
-  createMenu();
 
+  createMenu();
 }
 
 void draw() {
@@ -94,12 +93,4 @@ public void mouseClicked() {
     selectedWord = allWords.checkMouseOver();
   else if (currentState.compareTo(states[5])==0)
     menuChoice = redoOrSubmitMenu.checkMouseOver();
-  
 }
-
-
-final FilenameFilter jpgFilter = new FilenameFilter() {
-  boolean accept(File dir, String name) {
-    return name.toLowerCase().endsWith(".jpg");
-  }
-};

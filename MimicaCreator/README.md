@@ -34,3 +34,7 @@ Example: I have content related to the word **Reflect**, then I simply create a 
 ####Remove content
 
 To remove content, simply move the word folder from *activeWords* to *words*.
+
+## Dependencies
+
+This system uses the [GSVideo library](http://gsvideo.sourceforge.net/) for recording and saving videos. And [oscP5](http://www.sojamo.de/libraries/oscP5/) for communicating between sketches

@@ -17,7 +17,12 @@
 
 import java.io.FilenameFilter;
 
-Camera cam;
+ICamera cam;
+
+// NOTE: If Kinect is connected standard camera will not be recognized!
+// GSVideo has some probems with listing and choosing specific camera. Check doc.
+boolean camOrKinect = true; // true for cam, false for kinect
+
 CaptureScreen capture;
 CountDownPie pie;
 Words allWords;

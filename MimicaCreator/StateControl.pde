@@ -18,7 +18,11 @@ public void displayWords() {
 public void preapareToRecord() {
 
   if (pie.startOfCountDown()) {
-    cam = new Camera(this);
+    if (camOrKinect)
+      cam = new Camera(this);
+    else
+      cam = new Kinect(this);
+
     cam.startRecording();
   }
 

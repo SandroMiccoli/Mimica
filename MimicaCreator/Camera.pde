@@ -4,7 +4,7 @@
 
 //import codeanticode.gsvideo.*;
 
-public class Camera {
+public class Camera implements ICamera {
 
   GSCapture cam;
 

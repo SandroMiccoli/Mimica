@@ -16,7 +16,14 @@ public void displayWords() {
 
 // Runs a timer before recording
 public void preapareToRecord() {
+
+  if (pie.startOfCountDown()) {
+    cam = new Camera(this);
+    cam.startRecording();
+  }
+
   pie.drawPie();
+
   if (pie.endOfCountDown()) {
     pie = new CountDownPie(width-100, 100, 150, 150, 15);
     currentState=states.startRecord;
@@ -26,11 +33,11 @@ public void preapareToRecord() {
 // Starts recording
 public void startRecording() {
   clearScreen();
-  cam = new Camera(this);
-  cam.startRecording(); 
-  capture = new CaptureScreen(this, wordsFolder+selectedWord+"/", selectedWord);
-  capture.startRecording();
-  currentState=states.recordVideo;
+  if (cam.isCapturing()) {
+    capture = new CaptureScreen(this, wordsFolder+selectedWord+"/", selectedWord);
+    capture.startRecording();
+    currentState=states.recordVideo;
+  }
 }
 
 // Records Video

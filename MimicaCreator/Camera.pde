@@ -22,6 +22,10 @@ public class Camera {
   void stopRecording() {   
     cam.stop();
   }
+  
+  boolean isCapturing(){
+     return cam.isCapturing();
+  }
 
   // Read pixes from camera and displays on screen.
   void readPixels() {

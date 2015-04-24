@@ -12,3 +12,9 @@ boolean deleteFile(String path){
     video.setExecutable(true);
     return video.delete();
 }
+
+void delay(int delay)
+{
+  int time = millis();
+  while(millis() - time <= delay);
+}

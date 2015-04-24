@@ -11,6 +11,7 @@ class CountDownPie {
   float inc=0;
 
   boolean end=false;
+  boolean start=false;
 
   CountDownPie(int _x, int _y, int _w, int _h, float _sec) {
     x = _x;
@@ -18,12 +19,14 @@ class CountDownPie {
     w = _w;
     h = _h;
     end=false;
+    start=true;
     sec = _sec;
 
     inc = 360 / (frameRate * sec);
   }
 
   public void drawPie() {
+    start=false;
     noStroke();
     fill(211);
     arc(this.x, this.y, this.w, this.h, -HALF_PI, -HALF_PI+radians(this.counter), PIE);
@@ -37,6 +40,10 @@ class CountDownPie {
       
    
     
+  }
+  
+  public boolean startOfCountDown(){
+     return this.start; 
   }
 
   public boolean endOfCountDown() {

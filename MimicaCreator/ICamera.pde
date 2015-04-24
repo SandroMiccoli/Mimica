@@ -1,8 +1,6 @@
-// Class Camera
+// Interface ICamera
 //
-// Controls camera 
-
-//import codeanticode.gsvideo.*;
+// Creates a contract for camera methods. 
 
 public interface ICamera {
 

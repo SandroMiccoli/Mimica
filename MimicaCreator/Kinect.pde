@@ -59,17 +59,9 @@ public class Kinect implements ICamera {
     clearScreen();
     simpleOpenNI.update();
 
-    depthValues = simpleOpenNI.depthMap();
 
     maskImage.loadPixels();
-
-    // Creates Mask
-    for (int pic = 0; pic < depthValues.length; pic++)
-      if (depthValues[pic] > minDistance && depthValues[pic] < maxDistance)
-        // IN RANGE: WHITE PIXEL
-        maskImage.pixels[pic] = color(255);
-      else
-        maskImage.pixels[pic] = color(0);
+    createsMask();
     maskImage.updatePixels();
 
     rgbImage = simpleOpenNI.rgbImage();
@@ -77,5 +69,15 @@ public class Kinect implements ICamera {
 
     // COMPENSATE FOR alternativeViewPointDepthToImage
     image(rgbImage, -50, -50, width+50, height+50);
+  }
+  
+  void createsMask(){
+    depthValues = simpleOpenNI.depthMap();
+    for (int pic = 0; pic < depthValues.length; pic++)
+      if (depthValues[pic] > minDistance && depthValues[pic] < maxDistance)
+        // IN RANGE: WHITE PIXEL
+        maskImage.pixels[pic] = color(255);
+      else
+        maskImage.pixels[pic] = color(0);
   }
 }

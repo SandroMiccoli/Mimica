@@ -30,15 +30,18 @@ String wordsFolder = "data/activeWords/";
 //String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
-String[] states = {
-  "displayWords", 
-  "preapareToRecord", 
-  "startRecord", 
-  "recordVideo", 
-  "endRecord", 
-  "redoOrSubmit"
-};
-String currentState = "displayWords";
+enum s {
+  displayWords, 
+  prepareToRecord, 
+  startRecord, 
+  recordVideo, 
+  endRecord, 
+  redoOrSubmit
+}
+
+s states;
+
+s currentState = states.displayWords;
 
 int fps = 12;
 
@@ -46,11 +49,8 @@ void setup() {
   size(640, 480);
   frameRate(fps);
   background(0);
-
-  //*******
   oscP5 = new OscP5 (this, 5001);
   myRemoteLocation = new NetAddress("127.0.0.1", 5002);
-  //*******
 
   allWords = new Words();
   allWords.setWordsFromFolder();
@@ -61,36 +61,36 @@ void setup() {
 void draw() {
 
   // State DisplayWords
-  if (currentState.compareTo(states[0])==0) {
+  if (currentState == states.displayWords) {
     displayWords();
   }
   // State Prepare To Record
-  else if (currentState.compareTo(states[1])==0) {
+  else if (currentState == states.prepareToRecord) {
     preapareToRecord();
   }
   // State Start Record
-  else if (currentState.compareTo(states[2])==0) {  
+  else if (currentState == states.startRecord) {  
     startRecording();
   }
 
   // State Record video 
-  else if (currentState.compareTo(states[3])==0) {
+  else if (currentState == states.recordVideo) {
     recordVideo();
   }
   // State End Record 
-  else if (currentState.compareTo(states[4])==0) {
+  else if (currentState == states.endRecord) {
     endRecording();
   }
   // State Redo, Change word or Submit 
-  else if (currentState.compareTo(states[5])==0) {
+  else if (currentState == states.redoOrSubmit) {
     redoOrSubmit();
   }
 }
 
 // Checks which word was selected
 public void mouseClicked() {
-  if (currentState.compareTo(states[0])==0)
+  if (currentState == states.displayWords)
     selectedWord = allWords.checkMouseOver();
-  else if (currentState.compareTo(states[5])==0)
+  else if (currentState == states.redoOrSubmit)
     menuChoice = redoOrSubmitMenu.checkMouseOver();
 }

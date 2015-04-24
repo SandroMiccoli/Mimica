@@ -10,7 +10,7 @@ public void displayWords() {
 
     println(selectedWord);
 
-    currentState=states[1];
+    currentState=states.prepareToRecord;
   }
 }
 
@@ -19,7 +19,7 @@ public void preapareToRecord() {
   pie.drawPie();
   if (pie.endOfCountDown()) {
     pie = new CountDownPie(width-100, 100, 150, 150, 15);
-    currentState=states[2];
+    currentState=states.startRecord;
   }
 }
 
@@ -30,7 +30,7 @@ public void startRecording() {
   cam.startRecording(); 
   capture = new CaptureScreen(this, wordsFolder+selectedWord+"/", selectedWord);
   capture.startRecording();
-  currentState=states[3];
+  currentState=states.recordVideo;
 }
 
 // Records Video
@@ -40,7 +40,7 @@ public void recordVideo() {
   pie.drawPie();
 
   if (pie.endOfCountDown()) {
-    currentState=states[4];
+    currentState=states.endRecord;
   }
 }
 
@@ -51,7 +51,7 @@ public void endRecording() {
 
 
   clearScreen();
-  currentState=states[5];
+  currentState=states.redoOrSubmit;
 }
 
 public void redoOrSubmit() {
@@ -61,18 +61,18 @@ public void redoOrSubmit() {
     clearScreen();
     deleteFile(capture.getFullPath());
     menuChoice="";
-    currentState=states[1];
+    currentState=states.prepareToRecord;
   } else if (menuChoice.compareTo("Trocar palavra")==0) {
     clearScreen();
     deleteFile(capture.getFullPath());
     selectedWord="";
     menuChoice="";
-    currentState=states[0];
+    currentState=states.displayWords;
   } else if (menuChoice.compareTo("Enviar vídeo")==0) {
     clearScreen();
     selectedWord="";
     menuChoice="";  
-    currentState=states[0];
+    currentState=states.displayWords;
     // Sends the Osc Message
     oscMessageToPlay();
   }

@@ -51,7 +51,7 @@ public class Kinect implements ICamera {
   }
 
   boolean isCapturing() {
-    return true;
+    return true; // Gambis (;
   }
 
   // Read pixes from camera and displays on screen.

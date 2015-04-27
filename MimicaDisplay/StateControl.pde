@@ -35,13 +35,13 @@ public void displayRecordedVideo () {
   // se recebeu uma msg osc
 
   if (messageReceive) {
-    currentState=states[1];
+    hasOscVideo = false;
     messageReceive= false;
   } else {
     //verifica se esta sendo exibido um video ***
     //limpa a tela
     clearScreen();
-    
+
     if (!hasOscVideo) {
       moviesSlideShow2 = new VideoPlayer(this, absolutePath + oscMessage );
       hasOscVideo = true;

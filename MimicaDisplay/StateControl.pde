@@ -2,60 +2,68 @@
 
 // Displays a video from the Data Base
 public void displayVideoDataBase () {
-  //verifica se existe msg osc a caminho *
 
-
+  //checks for msg osc in the way 
+  //change to the state "displayRecordedVideo" 
   if (messageReceive) {
     currentState=states[1];
     messageReceive= false;
   } else {
-
-    //chama função que sorteia video pra ser exibido
+    //calls function that draws video to be displayed
     if (!hasVideo) {
       moviesSlideShow = new VideoPlayer(this, absolutePath+wordsFolder+thisWordAndVideo.setWordsFromFolder()+".ogg");
       hasVideo = true;
     }
 
-    //exibe o video
+    //displays the video
 
+    //println("iniciou o tempo");
     moviesSlideShow.readVideo();
     moviesSlideShow.loopVideo();
     moviesSlideShow.drawVideo(displayWidth/2-320, displayHeight/2-240);
 
-
-    // se passar o tempo do timer ***
-
-    //chama função que sorteia video pra ser exibido ***
-    //exibe o video ***
+    //if the timer runs out, calls another video to be displayed
+    if (timer.isFinished()) {
+      hasVideo = false;
+      timer.start();
+    }
   }
 }
 
 // Displays the video you just recorded
 public void displayRecordedVideo () {
-  // se recebeu uma msg osc
 
+  //checks for msg osc in the way 
   if (messageReceive) {
     hasOscVideo = false;
     messageReceive= false;
   } else {
-    //verifica se esta sendo exibido um video ***
-    //limpa a tela
-    clearScreen();
 
+
+    //clear the screen
+    clearScreen();
+    
+    //receive the osc video path
     if (!hasOscVideo) {
       moviesSlideShow2 = new VideoPlayer(this, absolutePath + oscMessage );
       hasOscVideo = true;
     }
 
-    // exibe o video recebido
+    //displays the video you just recorded
     moviesSlideShow2.readVideo();
     moviesSlideShow2.loopVideo();
     moviesSlideShow2.drawVideo(displayWidth/2-320, displayHeight/2-240);
 
 
 
-    //se passar o timer 
-    //exibe um video do banco de dados
+
+    //if the timer runs out, calls another video to be displayed
+    if (timer.isFinished()) {
+      hasVideo = false;
+      hasOscVideo = false;
+      timer.start();
+      currentState=states[0];
+    }
   }
 }
 

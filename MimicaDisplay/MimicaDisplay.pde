@@ -14,13 +14,15 @@
 VideoPlayer moviesSlideShow;
 VideoPlayer moviesSlideShow2;
 FindWordsAndVideos thisWordAndVideo;
+Timer timer;
 
 boolean messageReceive;
 boolean playVideo;
 boolean hasVideo;
 boolean hasOscVideo;
 
-String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+//String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String wordsFolder = "data/activeWords/";
 
 String[] states = {
@@ -31,6 +33,7 @@ String[] states = {
 String currentState = "displayVideoDataBase";
 
 int fps = 12;
+int timerMinutes = 60*1000; // value of the timer in minutes
 
 void setup() {
   size(displayWidth, displayHeight);
@@ -45,6 +48,9 @@ void setup() {
   //*******
 
   thisWordAndVideo = new FindWordsAndVideos();
+  //Every 1 minute, the program changes the video
+  timer = new Timer(1*timerMinutes);
+  timer.start();
 }
 
 void draw() {
@@ -58,3 +64,4 @@ void draw() {
     displayRecordedVideo ();
   }
 }
+

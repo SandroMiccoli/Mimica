@@ -20,7 +20,7 @@ public class Kinect implements ICamera {
 
   public Kinect(processing.core.PApplet parent)
   {
-    simpleOpenNI = new SimpleOpenNI(parent);
+    simpleOpenNI = new SimpleOpenNI(0,parent);
   }
 
   // Starts camera recording
@@ -47,7 +47,7 @@ public class Kinect implements ICamera {
 
   // Stops camera recording
   void stopRecording() {
-    simpleOpenNI.dispose();
+    // simpleOpenNI.finalize();  // Another "gambis": Kinect can't start again if we finilize/dispose him here... 
   }
 
   boolean isCapturing() {

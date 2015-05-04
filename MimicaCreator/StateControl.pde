@@ -21,8 +21,11 @@ public void preapareToRecord() {
     if (camOrKinect)
       cam = new Camera(this);
     else
+      if (flagKinect) {
       cam = new Kinect(this);
-
+      flagKinect = false;
+    } else {
+    }
     cam.startRecording();
   }
 
@@ -95,3 +98,4 @@ public void createMenu() {
   redoOrSubmitMenu.addWord("Trocar palavra", new PVector(150, 200));
   redoOrSubmitMenu.addWord("Enviar vídeo", new PVector(150, 300));
 }
+

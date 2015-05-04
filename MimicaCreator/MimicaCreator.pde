@@ -32,23 +32,17 @@ Words redoOrSubmitMenu;
 String menuChoice="";
 
 String wordsFolder = "data/activeWords/";
-//String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
-String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
+//String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
-enum s {
-  displayWords, 
-  prepareToRecord, 
-  startRecord, 
-  recordVideo, 
-  endRecord, 
-  redoOrSubmit
-}
+
 
 s states;
 
 s currentState = states.displayWords;
 
 int fps = 12;
+boolean flagKinect = true;
 
 void setup() {
   size(640, 480);

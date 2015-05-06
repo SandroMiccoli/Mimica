@@ -21,7 +21,7 @@ ICamera cam;
 
 // NOTE: If Kinect is connected standard camera will not be recognized!
 // GSVideo has some probems with listing and choosing specific camera. Check doc.
-boolean camOrKinect = false; // true for cam, false for kinect
+boolean camOrKinect = true; // true for cam, false for kinect
 
 CaptureScreen capture;
 CountDownPie pie;
@@ -32,8 +32,8 @@ Words redoOrSubmitMenu;
 String menuChoice="";
 
 String wordsFolder = "data/activeWords/";
-String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
-//String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+//String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
+String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
 
 

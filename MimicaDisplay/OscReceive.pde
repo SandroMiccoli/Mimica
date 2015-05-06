@@ -1,5 +1,8 @@
 import oscP5.*;
 import netP5.*;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -7,10 +10,18 @@ NetAddress myRemoteLocation;
 String oscMessage;
 
 
+
 void oscEvent(OscMessage theOscMessage) 
 {  
-  // get the value as a string
-  oscMessage = theOscMessage.get(0).stringValue();
+  try {
+    // get the value as a string
+    oscMessage = URLDecoder.decode(theOscMessage.get(0).stringValue(), "UTF-8");
+  }
+
+  catch(UnsupportedEncodingException ex)
+  { 
+    println(ex.getMessage());
+  }
   messageReceive = true;
 
   // print out the message

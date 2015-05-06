@@ -16,6 +16,8 @@ public class Words {
   private float column = width/3;
   private float line = height/6;
 
+  private PVector[] pos = new PVector[10];
+
   File folder;
 
   public String absoluteWordsFolder = projectFolder+wordsFolder;
@@ -24,7 +26,7 @@ public class Words {
   // Constructor
   Words() {
     this.words = new Hashtable<String, PVector>();
-    ;
+    setWordPositions();
   }
 
   // Searches for folders in the Words folder.
@@ -39,17 +41,26 @@ public class Words {
 
       // Capitalize first letter in string
       String folderName = folders[i].getName().substring(0, 1).toUpperCase() + folders[i].getName().substring(1);
-
-      if (i<5)
-        this.words.put(folderName, new PVector(column, line*(i+1)));
-      else
-        this.words.put(folderName, new PVector(column*2, line*(i-5+1)));
+     this.words.put(folderName, pos[i]);
     }
-
   }
-  
-  public void addWord(String word, PVector pos){
-      this.words.put(word,pos);
+
+  // Set Word Positions manually for more control
+  public void setWordPositions() {
+    this.pos[0] = new PVector(59.0, 80.0);
+    this.pos[1] = new PVector(120.0, 160.0);
+    this.pos[2] = new PVector(100, 240.0);
+    this.pos[3] = new PVector(80, 320.0);
+    this.pos[4] = new PVector(160, 400.0);
+    this.pos[5] = new PVector(400.0, 80.0);
+    this.pos[6] = new PVector(326.0, 160.0);
+    this.pos[7] = new PVector(426.0, 240.0);
+    this.pos[8] = new PVector(277.0, 320.0);
+    this.pos[9] = new PVector(480.0, 400.0);
+  }
+
+  public void addWord(String word, PVector pos) {
+    this.words.put(word, pos);
   }
 
   // Set word style

@@ -11,15 +11,21 @@
  *
  */
 
+import fullscreen.*; 
+
+SoftFullScreen fs; 
+
 VideoPlayer moviesSlideShow;
 VideoPlayer moviesSlideShow2;
 FindWordsAndVideos thisWordAndVideo;
 Timer timer;
 
+
 boolean messageReceive;
 boolean playVideo;
 boolean hasVideo;
 boolean hasOscVideo;
+
 
 //String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
@@ -35,9 +41,21 @@ String currentState = "displayVideoDataBase";
 int fps = 12;
 int timerMinutes = 60*1000; // value of the timer in minutes
 
+
+
+
 void setup() {
-  size(displayWidth, displayHeight);
-  background(0);
+
+  size(3280, 768);
+  // Create the fullscreen object
+  fs = new SoftFullScreen(this); 
+
+  //fs.setShortcutsEnabled(true);
+  // enter fullscreen mode
+  fs.enter(); 
+
+
+
   frameRate(fps);
 
   hasVideo = false;
@@ -55,6 +73,7 @@ void setup() {
 
 void draw() {
   // State DisplayWords
+  background(0);
 
   if (currentState.compareTo(states[0])==0) {
     displayVideoDataBase();

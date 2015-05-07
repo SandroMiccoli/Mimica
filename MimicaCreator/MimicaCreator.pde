@@ -23,6 +23,8 @@ ICamera cam;
 // GSVideo has some probems with listing and choosing specific camera. Check doc.
 boolean camOrKinect = true; // true for cam, false for kinect
 
+boolean stressTest=false; // Chooses random word and submits video forever
+
 CaptureScreen capture;
 CountDownPie pie;
 Words allWords;
@@ -35,7 +37,6 @@ String wordsFolder = "data/activeWords/";
 //String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
-boolean stressTest=true; // Chooses random word and submits video forever
 
 s states;
 

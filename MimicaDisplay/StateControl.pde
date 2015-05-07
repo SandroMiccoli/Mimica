@@ -52,17 +52,23 @@ public void displayRecordedVideo () {
     //receive the osc video path
     if (!hasOscVideo) {
       movieCenter = new VideoPlayer(this, absolutePath + oscMessage );
+      movieCenter.setSize(640,480);
       movieCenter.setPosition(displayWidth/2-320, displayHeight/2-240);      
       movieCenter.playVideo();
+      thisWordAndVideo.setRandomFolder(); // Instead of selecting random folder, must select folder from OSC message (problably a split string will solve that)
+      createMovieCorners();
+      playMovieCorners();
       hasOscVideo = true;
     }
 
     //displays the video you just recorded
     movieCenter.displayVideo();
+    displayMovieCorners();
 
     //if the timer runs out, calls random video to be displayed
     if (timer.isFinished()) {
       movieCenter.stopVideo();
+      stopMovieCorners();
       hasVideo = false;
       hasOscVideo = false;
       timer.start();
@@ -84,7 +90,6 @@ public void playMovieCorners(){
     movieCorners.get(i).setSize(160,120);
     movieCorners.get(i).setPosition(corners[i].x,corners[i].y);
     movieCorners.get(i).playVideo();
-    
   }
   
 }

@@ -35,7 +35,7 @@ String wordsFolder = "data/activeWords/";
 //String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
-boolean stressTest=false; // Chooses random word and submits video forever
+boolean stressTest=true; // Chooses random word and submits video forever
 
 s states;
 

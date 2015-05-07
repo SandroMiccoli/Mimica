@@ -25,7 +25,7 @@ FindWordsAndVideos() {
   // Chooses a random video
   //returns a String with the word and the name of the video selected
   
-  public String  setWordsFromFolder() {
+  public String  getVideoFromFolder() {
 
     File[] videoFiles;
     File[] folders;
@@ -66,4 +66,3 @@ FindWordsAndVideos() {
     }
   };
 }
-

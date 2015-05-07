@@ -6,24 +6,25 @@ public void displayVideoDataBase () {
   //checks for msg osc in the way 
   //change to the state "displayRecordedVideo" 
   if (messageReceive) {
+    if (hasVideo)
+      movieCenter.stopVideo();
     currentState=states[1];
     messageReceive= false;
   } else {
     //calls function that draws video to be displayed
     if (!hasVideo) {
-      moviesSlideShow = new VideoPlayer(this, absolutePath+wordsFolder+thisWordAndVideo.setWordsFromFolder()+".ogg");
+      movieCenter = new VideoPlayer(this, absolutePath+wordsFolder+thisWordAndVideo.getVideoFromFolder()+".ogg");
+      movieCenter.setPosition(displayWidth/2-320, displayHeight/2-240);      
+      movieCenter.playVideo();
       hasVideo = true;
     }
 
-    //displays the video
-
-    //println("iniciou o tempo");
-    moviesSlideShow.readVideo();
-    moviesSlideShow.loopVideo();
-    moviesSlideShow.drawVideo(displayWidth/2-320, displayHeight/2-240);
+    movieCenter.displayVideo();
+    displayRandomVideos();
 
     //if the timer runs out, calls another video to be displayed
     if (timer.isFinished()) {
+      movieCenter.stopVideo();
       hasVideo = false;
       timer.start();
     }
@@ -35,30 +36,29 @@ public void displayRecordedVideo () {
 
   //checks for msg osc in the way 
   if (messageReceive) {
+    if (hasVideo)
+      movieCenter.stopVideo();
     hasOscVideo = false;
     messageReceive= false;
   } else {
-
 
     //clear the screen
     clearScreen();
     
     //receive the osc video path
     if (!hasOscVideo) {
-      moviesSlideShow2 = new VideoPlayer(this, absolutePath + oscMessage );
+      movieCenter = new VideoPlayer(this, absolutePath + oscMessage );
+      movieCenter.setPosition(displayWidth/2-320, displayHeight/2-240);      
+      movieCenter.playVideo();
       hasOscVideo = true;
     }
 
     //displays the video you just recorded
-    moviesSlideShow2.readVideo();
-    moviesSlideShow2.loopVideo();
-    moviesSlideShow2.drawVideo(displayWidth/2-320, displayHeight/2-240);
+    movieCenter.displayVideo();
 
-
-
-
-    //if the timer runs out, calls another video to be displayed
+    //if the timer runs out, calls random video to be displayed
     if (timer.isFinished()) {
+      movieCenter.stopVideo();
       hasVideo = false;
       hasOscVideo = false;
       timer.start();
@@ -66,4 +66,3 @@ public void displayRecordedVideo () {
     }
   }
 }
-

@@ -97,6 +97,17 @@ public class Words {
     }
     return ""; // no word selected
   }
+  
+  public String chooseRandomWord(){
+    int r = int(random(0,10));
+    int i = 0;
+    for (String word : this.words.keySet ()) {
+      if (r==i)
+        return word;
+      i++;
+    }
+    return "";
+  }
 
   final FilenameFilter folderFilter = new FilenameFilter() {
     boolean accept(File dir, String name) {

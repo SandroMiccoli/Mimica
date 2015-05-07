@@ -4,8 +4,9 @@ public class VideoPlayer {
 
   public int fps = 12;
   Movie movie;
-  PVector pos;
-
+  private PVector pos;
+  private int w;
+  private int h;
 
   // Constructor 
   VideoPlayer(processing.core.PApplet parent, String path) {
@@ -15,7 +16,7 @@ public class VideoPlayer {
 
   //Draw the video
   void drawVideo() {
-    image(movie, this.pos.x, this.pos.y, 640, 480);
+    image(movie, this.pos.x, this.pos.y, this.w, this.h);
   }
 
   // Read video 
@@ -46,7 +47,12 @@ public class VideoPlayer {
   }
 
   void setPosition(float x, float y) {
-    pos = new PVector(x, y);
+    this.pos = new PVector(x, y);
+  }
+
+  void setSize(int w, int h) {
+    this.w = w;
+    this.h = h;
   }
 }
 

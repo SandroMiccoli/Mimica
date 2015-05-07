@@ -3,64 +3,78 @@ import java.io.FilenameFilter;
 
 public class FindWordsAndVideos {
 
-  // Hashtable contains words and their position.
-  private Hashtable<String, PVector> words;
 
-  File folder;
-  File videoFile;
-
+  public String word = "";
+  public int amountOfVideos=0;
   public String absoluteWordsFolder = absolutePath+wordsFolder;
-  public String videosPath = "";
 
-  // Constructor
-FindWordsAndVideos() {
-    this.words = new Hashtable<String, PVector>();
-    ;
+  public String getRandomVideoFromFolder(){
+    setRandomFolder();
+    int whichFile = getRandomVideo();
+    println(word+"/"+whichFile);
+    return word+"/"+whichFile;
+  }
+  
+  public String getRandomVideoFromSameFolder(){
+    int whichFile = getRandomVideo();
+    println(word+"/"+whichFile);
+    return word+"/"+whichFile;
   }
 
-  // Searches for folders in the Words folder.
-  // Each folder represents a word.
-  // Chooses a random word
-  // Searches for videos files
-  // Chooses a random video
-  //returns a String with the word and the name of the video selected
-  
-  public String  getVideoFromFolder() {
-
+  public void setRandomFolder() {
+    File videoFolder;
     File[] videoFiles;
-    File[] folders;
-
-    int whichFile = 0;
-    int whichWord = 0;
+    String videosPath = "";
+    
     do {
-      folder = new java.io.File(dataPath(absoluteWordsFolder));
-      folders = folder.listFiles(folderFilter);
-
-      whichWord = int(random(0, 9));
-
-
-      videosPath = absolutePath+wordsFolder+ folders[whichWord].getName();
-
-      videoFile = new java.io.File(dataPath(videosPath));
-      videoFiles = videoFile.listFiles(folderFilter);
+      setRandomWord();
+      
+      videosPath = absolutePath+wordsFolder+word;
+      videoFolder = new java.io.File(dataPath(videosPath));
+      videoFiles = videoFolder.listFiles(oggFilter);
+      
+      amountOfVideos=videoFiles.length;
 
       println(videosPath); 
-      println("quantidade de video: "+videoFiles.length);
+      println("quantidade de videos: "+amountOfVideos);
     }
-    while (videoFiles.length<=0);
+    while (amountOfVideos<=0);
 
-    whichFile = int(random(0, videoFiles.length));
+  }
+
+  // Chooses a random word from folder list
+  // Chosses from only the first 10 folders.
+  public void setRandomWord() {
+    
+      File folder;
+      String randomWord="";
+      File[] folders;
+      folder = new java.io.File(dataPath(absoluteWordsFolder));
+      folders = folder.listFiles(folderFilter);
+      randomWord=folders[int(random(0, 9))].getName();
+      word=randomWord;
+  }
+  
+  public int getRandomVideo(){
+    
+    int whichFile = int(random(0, amountOfVideos));
     println("video sorteado: "+ whichFile);
-    println(folders[whichWord].getName()+"/"+whichFile);
-
-    return folders[whichWord].getName()+"/"+whichFile;
-
+    
+    return whichFile;
   }
 
 
   final FilenameFilter folderFilter = new FilenameFilter() {
     boolean accept(File dir, String name) {
       if (!name.toLowerCase().startsWith("."))
+        return true;
+      return false;
+    }
+  };
+  
+  final FilenameFilter oggFilter = new FilenameFilter() {
+    boolean accept(File dir, String name) {
+      if (name.toLowerCase().endsWith(".ogg"))
         return true;
       return false;
     }

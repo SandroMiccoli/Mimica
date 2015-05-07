@@ -16,6 +16,7 @@ import fullscreen.*;
 SoftFullScreen fs; 
 
 VideoPlayer movieCenter;
+ArrayList<VideoPlayer> movieCorners = new ArrayList<VideoPlayer>();
 FindWordsAndVideos thisWordAndVideo;
 FindImages thisTotalImages;
 Timer timer;

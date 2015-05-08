@@ -12,6 +12,7 @@ class Timer {
   }
 
   void start() {
+    println("Timer start!");
     savedTime = millis();
   }
 
@@ -19,10 +20,10 @@ class Timer {
     // Check how much time has passed
     int passedTime = millis() - savedTime;
     if (passedTime > totalTime) {
+      println("Timer finished");
       return true;
     } else {
       return false;
     }
   }
 }
-

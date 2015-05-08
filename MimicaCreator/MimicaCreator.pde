@@ -23,7 +23,8 @@ ICamera cam;
 // GSVideo has some probems with listing and choosing specific camera. Check doc.
 boolean camOrKinect = true; // true for cam, false for kinect
 
-boolean stressTest=false; // Chooses random word and submits video forever
+// Chooses random word and submits video forever
+boolean stressTest=true; 
 
 CaptureScreen capture;
 CountDownPie pie;

@@ -2,11 +2,10 @@ import java.util.Hashtable;
 import java.io.FilenameFilter;
 
 public class FindWordsAndVideos {
-
-
-  public String word = "";
-  public int amountOfVideos=0;
-  public String absoluteWordsFolder = absolutePath+wordsFolder;
+  
+  private String word = "";
+  private int amountOfVideos=0;
+  private String absoluteWordsFolder = absolutePath+wordsFolder;
 
   public String getRandomVideoFromFolder(){
     setRandomFolder();
@@ -19,6 +18,25 @@ public class FindWordsAndVideos {
     int whichFile = getRandomVideo();
     println(word+"/"+whichFile);
     return word+"/"+whichFile;
+  }
+  
+  public void getAmountOfVideos(){
+    File videoFolder;
+    File[] videoFiles;
+    String videosPath = "";
+    
+    do {      
+      videosPath = absolutePath+wordsFolder+word;
+      videoFolder = new java.io.File(dataPath(videosPath));
+      videoFiles = videoFolder.listFiles(oggFilter);
+      
+      amountOfVideos=videoFiles.length;
+
+      println(videosPath); 
+      println("quantidade de videos: "+amountOfVideos);
+    }
+    while (amountOfVideos<=0);
+    
   }
 
   public void setRandomFolder() {
@@ -53,6 +71,14 @@ public class FindWordsAndVideos {
       folders = folder.listFiles(folderFilter);
       randomWord=folders[int(random(0, 9))].getName();
       word=randomWord;
+  }
+  
+  public void setWord(String w){
+      word=w;
+  }
+  
+  public void setFolder(){
+    
   }
   
   public int getRandomVideo(){

@@ -8,7 +8,7 @@ public void displayWords() {
 
     pie = new CountDownPie(width/2, height/2, width/2, width/2, 5);
 
-    println(selectedWord);
+    println("Palavra selecionada: "+selectedWord);
 
     currentState=states.prepareToRecord;
   }
@@ -98,4 +98,3 @@ public void createMenu() {
   redoOrSubmitMenu.addWord("Trocar palavra", new PVector(150, 200));
   redoOrSubmitMenu.addWord("Enviar vídeo", new PVector(150, 300));
 }
-

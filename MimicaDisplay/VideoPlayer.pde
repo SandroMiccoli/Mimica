@@ -40,6 +40,10 @@ public class VideoPlayer {
   void stopVideo() {
     movie.stop();
   }
+  
+  void killVideo(){
+    movie.dispose(); 
+  }
 
   void displayVideo() {
     readVideo();

@@ -93,8 +93,8 @@ public void redoOrSubmit() {
 }
 
 public void createMenu() {
-  redoOrSubmitMenu = new Words();
+  redoOrSubmitMenu = new Words("Gotham-Light.otf",40);
   redoOrSubmitMenu.addWord("Gravar novamente", new PVector(150, 100));
-  redoOrSubmitMenu.addWord("Trocar palavra", new PVector(150, 200));
-  redoOrSubmitMenu.addWord("Enviar vídeo", new PVector(150, 300));
+  redoOrSubmitMenu.addWord("Trocar palavra", new PVector(150, 250));
+  redoOrSubmitMenu.addWord("Enviar vídeo", new PVector(150, 400));
 }

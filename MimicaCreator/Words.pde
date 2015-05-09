@@ -10,23 +10,27 @@ public class Words {
   private Hashtable<String, PVector> words;
 
   // Dimensions of word "box"
-  private int letter_w = 18;
-  private int word_h = 25;
+  private int letter_w = 25;
+  private int word_h = 35;
 
   private float column = width/3;
   private float line = height/6;
 
   private PVector[] pos = new PVector[10];
 
-  File folder;
+  private File folder;
 
-  public String absoluteWordsFolder = projectFolder+wordsFolder;
+  private String absoluteWordsFolder = projectFolder+wordsFolder;
 
-
+  private PFont myFont;
+  private int fontSize=21;
+  
   // Constructor
-  Words() {
+  Words(String f, int s) {
     this.words = new Hashtable<String, PVector>();
     setWordPositions();
+    setFontSize(s);
+    setFont(f);
   }
 
   // Searches for folders in the Words folder.
@@ -65,7 +69,8 @@ public class Words {
 
   // Set word style
   public void setStyle() {
-    textSize(32);
+    textFont(this.myFont, this.fontSize);
+    textSize(this.fontSize);
     fill(#F0F0F0);
   }
 
@@ -79,7 +84,7 @@ public class Words {
 
       // Draw rect to view where mouse needs to click
       //stroke(0);
-      //fill(111,50);
+      //fill(111,10);
       //rect(pos.x,pos.y-word_h,pos.x+letter_w*word.length(),pos.y);
 
       text(word, pos.x, pos.y);
@@ -107,6 +112,14 @@ public class Words {
       i++;
     }
     return "";
+  }
+  
+  public void setFont(String f){
+    this.myFont = createFont("fonts/"+f, this.fontSize);
+  }
+  
+  public void setFontSize(int s){
+    this.fontSize = s;  
   }
 
   final FilenameFilter folderFilter = new FilenameFilter() {

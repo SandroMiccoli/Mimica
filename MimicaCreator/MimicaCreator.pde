@@ -24,7 +24,7 @@ ICamera cam;
 boolean camOrKinect = true; // true for cam, false for kinect
 
 // Chooses random word and submits video forever
-boolean stressTest=true; 
+boolean stressTest=false; 
 
 CaptureScreen capture;
 CountDownPie pie;
@@ -53,7 +53,7 @@ void setup() {
   oscP5 = new OscP5 (this, 5001);
   myRemoteLocation = new NetAddress("127.0.0.1", 5002);
 
-  allWords = new Words();
+  allWords = new Words("Gotham-Light.otf",40);
   allWords.setWordsFromFolder();
 
   createMenu();

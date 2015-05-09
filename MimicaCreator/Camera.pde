@@ -20,7 +20,7 @@ public class Camera implements ICamera {
   
   // Stops camera recording
   void stopRecording() {   
-    cam.stop();
+    cam.dispose();
   }
   
   boolean isCapturing(){

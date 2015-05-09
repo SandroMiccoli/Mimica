@@ -10,6 +10,7 @@ public void displayVideoDataBase () {
       movieCenter.killVideo();
       stopMovieCorners();
       clearScreen();
+      timer.start();
     }
     currentState=states[1];
     messageReceive= false;
@@ -47,6 +48,7 @@ public void displayRecordedVideo () {
       movieCenter.killVideo();
       stopMovieCorners();
       clearScreen();
+      timer.start();
     }
     hasOscVideo = false;
     messageReceive= false;

@@ -28,8 +28,8 @@ boolean hasVideo;
 boolean hasOscVideo;
 
 
-String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
-//String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
+//String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String wordsFolder = "data/activeWords/";
 
 String[] states = {

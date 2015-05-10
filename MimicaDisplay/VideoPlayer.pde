@@ -8,6 +8,8 @@ public class VideoPlayer {
   private int w;
   private int h;
 
+
+
   // Constructor 
   VideoPlayer(processing.core.PApplet parent, String path) {
     movie = new Movie(parent, path);
@@ -16,6 +18,7 @@ public class VideoPlayer {
 
   //Draw the video
   void drawVideo() {
+ 
     image(movie, this.pos.x, this.pos.y, this.w, this.h);
   }
 
@@ -58,6 +61,17 @@ public class VideoPlayer {
     this.w = w;
     this.h = h;
   }
+  
+   boolean calcMouseIn(){
+    if(mouseX>this.pos.x && mouseX< this.pos.x+this.w && mouseY>this.pos.y && mouseY<this.pos.y +this.h){
+      return true;
+  }
+  else{
+  return false;
+  }
+  
+}
+
 }
 
 void movieEvent(Movie m) {

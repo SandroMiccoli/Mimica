@@ -43,9 +43,22 @@ int fps = 12;
 int timerMinutes = 60*1000; // value of the timer in minutes
 
 
+int wMovieCenter = 640;
+int hMovieCenter = 480;
+
+int wMovieCorners = 240;
+int hMovieCorners = 180;
+
+int xMovieCenter ;
+int yMovieCenter ;
 
 
 void setup() {
+
+   xMovieCenter = displayWidth/2-wMovieCenter/2;
+   yMovieCenter = displayHeight/2-hMovieCenter/2;
+
+ 
 
   size(3280, 768);
   // Create the fullscreen object
@@ -84,3 +97,4 @@ void draw() {
     displayRecordedVideo ();
   }
 }
+

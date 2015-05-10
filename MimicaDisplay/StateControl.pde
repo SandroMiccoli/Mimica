@@ -18,8 +18,8 @@ public void displayVideoDataBase () {
     //calls function that draws video to be displayed
     if (!hasVideo) {
       movieCenter = new VideoPlayer(this, absolutePath+wordsFolder+thisWordAndVideo.getRandomVideoFromFolder()+".ogg");
-      movieCenter.setSize(640, 480);
-      movieCenter.setPosition(displayWidth/2-320, displayHeight/2-240);      
+      movieCenter.setSize(wMovieCenter, hMovieCenter);
+      movieCenter.setPosition(xMovieCenter, yMovieCenter);      
       movieCenter.playVideo();
       createMovieCorners();
       playMovieCorners();
@@ -60,8 +60,8 @@ public void displayRecordedVideo () {
     //receive the osc video path
     if (!hasOscVideo) {
       movieCenter = new VideoPlayer(this, absolutePath + oscMessage );
-      movieCenter.setSize(640, 480);
-      movieCenter.setPosition(displayWidth/2-320, displayHeight/2-240);      
+      movieCenter.setSize(wMovieCenter, hMovieCenter);
+      movieCenter.setPosition(xMovieCenter, yMovieCenter);      
       movieCenter.playVideo();
       thisWordAndVideo.setWord(split(oscMessage, '/')[2]); // Instead of selecting random folder, must select folder from OSC message (problably a split string will solve that)
       thisWordAndVideo.getAmountOfVideos();
@@ -100,7 +100,7 @@ public void playMovieCorners() {
     };
 
     for (int i=0; i<movieCorners.size (); i++) {
-      movieCorners.get(i).setSize(w, h);
+      movieCorners.get(i).setSize(wMovieCorners, hMovieCorners);
       movieCorners.get(i).setPosition(corners[i].x, corners[i].y);
       movieCorners.get(i).playVideo();
     }

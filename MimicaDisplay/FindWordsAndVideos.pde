@@ -3,9 +3,14 @@ import java.io.FilenameFilter;
 
 public class FindWordsAndVideos {
   
-  private String word = "";
+  public String word = "";
   private int amountOfVideos=0;
   private String absoluteWordsFolder = absolutePath+wordsFolder;
+
+public String getRandomVideoFolder(){
+  setRandomFolder();
+   return word;
+}
 
   public String getRandomVideoFromFolder(){
     setRandomFolder();

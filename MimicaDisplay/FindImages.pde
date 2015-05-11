@@ -15,7 +15,7 @@ public class FindImages {
     imageFiles = folder.listFiles(imageFilter);
 
     int totalImages = imageFiles.length;
-    println("total de imagens na pasta: "+ totalImages);
+   // println("total de imagens na pasta: "+ totalImages);
     return totalImages;
   }
 

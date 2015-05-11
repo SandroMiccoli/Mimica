@@ -8,7 +8,7 @@ public void displayVideoDataBase () {
   if (messageReceive) {
     if (hasVideo) {
       movieCenter.killVideo();
-      stopMovieCorners();
+      //stopMovieCorners();
       clearScreen();
       timer.start();
     }
@@ -21,13 +21,20 @@ public void displayVideoDataBase () {
       movieCenter.setSize(wMovieCenter, hMovieCenter);
       movieCenter.setPosition(xMovieCenter, yMovieCenter);      
       movieCenter.playVideo();
-      createMovieCorners();
-      playMovieCorners();
+      //createMovieCorners();
+      //playMovieCorners();
+      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610); //OK
+      totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);//OK
       hasVideo = true;
     }
 
     movieCenter.displayVideo();
-    displayMovieCorners();
+    //displayMovieCorners();
+
+    if ( totalImages>=4) {
+      relatedImagesScreen.loadImages( absolutePath+wordsFolder+thisWordAndVideo.word+"/");
+      relatedImagesScreen.dramImages();
+    }
 
     //if the timer runs out, calls another video to be displayed
     if (timer.isFinished()) {
@@ -65,19 +72,26 @@ public void displayRecordedVideo () {
       movieCenter.playVideo();
       thisWordAndVideo.setWord(split(oscMessage, '/')[2]); // Instead of selecting random folder, must select folder from OSC message (problably a split string will solve that)
       thisWordAndVideo.getAmountOfVideos();
-      createMovieCorners();
-      playMovieCorners();
+      //createMovieCorners();
+      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610);
+      totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);
+      //playMovieCorners();
       hasOscVideo = true;
     }
 
     //displays the video you just recorded
     movieCenter.displayVideo();
-    displayMovieCorners();
-
+    //displayMovieCorners();
+    //OK
+    //OK
+    if ( totalImages>=4) {
+      relatedImagesScreen.loadImages( absolutePath+wordsFolder+split(oscMessage, '/')[2]+"/");
+      relatedImagesScreen.dramImages();
+    }
     //if the timer runs out, calls random video to be displayed
     if (timer.isFinished()) {
       movieCenter.killVideo();
-      stopMovieCorners();
+      //stopMovieCorners();
       hasVideo = false;
       hasOscVideo = false;
       timer.start();
@@ -88,10 +102,10 @@ public void displayRecordedVideo () {
 
 // Displays 4 random videos on each corner of the screen.
 public void playMovieCorners() {
-  
+
   int w = 240;
   int h = 180;
-  
+
   PVector[] corners = {
     new PVector(0, 0), 
     new PVector(displayWidth-w, 0), 
@@ -109,7 +123,7 @@ public void playMovieCorners() {
 public void createMovieCorners() {
   stopMovieCorners();
   movieCorners.clear();
-  
+
   for (int i=0; i<4; i++) {
     movieCorners.add(new VideoPlayer(this, absolutePath+wordsFolder+thisWordAndVideo.getRandomVideoFromSameFolder()+".ogg"));
   }
@@ -126,3 +140,4 @@ public void stopMovieCorners() {
     corner.killVideo();
   }
 }
+

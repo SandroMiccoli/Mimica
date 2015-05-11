@@ -15,7 +15,7 @@ public class CaptureScreen {
   CaptureScreen(processing.core.PApplet parent, String path, String f) {
 
     File folder = new java.io.File(dataPath(projectFolder+path));
-    File[] folders = folder.listFiles();
+    File[] folders = folder.listFiles(oggFilter);
     this.filePath = path;
     this.fileName = folders.length+".ogg";
     this.movie = new GSMovieMaker(parent, width, height, this.filePath+this.fileName, GSMovieMaker.THEORA, GSMovieMaker.MEDIUM, fps);
@@ -57,4 +57,13 @@ public class CaptureScreen {
     println("Number of queued frames : " + movie.getQueuedFrames());
     println("Number of dropped frames: " + movie.getDroppedFrames());
   }
+  
+  
+  final FilenameFilter oggFilter = new FilenameFilter() {
+    boolean accept(File dir, String name) {
+      if (name.toLowerCase().endsWith(".ogg"))
+        return true;
+      return false;
+    }
+  };
 }

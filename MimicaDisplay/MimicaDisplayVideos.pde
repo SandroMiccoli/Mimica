@@ -10,14 +10,12 @@
  *    - Communicates with other sketch using OSC
  *
  */
-
+/*
 import fullscreen.*; 
 
 SoftFullScreen fs; 
 
 VideoPlayer movieCenter;
-RelatedImages relatedImagesScreen;
-
 ArrayList<VideoPlayer> movieCorners = new ArrayList<VideoPlayer>();
 FindWordsAndVideos thisWordAndVideo;
 FindImages thisTotalImages;
@@ -43,7 +41,6 @@ String currentState = "displayVideoDataBase";
 
 int fps = 12;
 int timerMinutes = 60*1000; // value of the timer in minutes
-int totalImages;
 
 
 int wMovieCenter = 640;
@@ -83,7 +80,6 @@ void setup() {
   //*******
 
   thisWordAndVideo = new FindWordsAndVideos();
-  thisTotalImages = new FindImages();
   //Every 1 minute, the program changes the video
   timer = new Timer(1*timerMinutes);
   timer.start();
@@ -101,3 +97,5 @@ void draw() {
     displayRecordedVideo ();
   }
 }
+*/
+

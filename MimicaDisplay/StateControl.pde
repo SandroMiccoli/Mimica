@@ -23,7 +23,7 @@ public void displayVideoDataBase () {
       movieCenter.playVideo();
       //createMovieCorners();
       //playMovieCorners();
-      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610); //OK
+      relatedImagesScreen = new RelatedImages(59, 101,   998, 101,   59, 455,   998,455); //OK
       totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);//OK
       hasVideo = true;
     }
@@ -73,7 +73,7 @@ public void displayRecordedVideo () {
       thisWordAndVideo.setWord(split(oscMessage, '/')[2]); // Instead of selecting random folder, must select folder from OSC message (problably a split string will solve that)
       thisWordAndVideo.getAmountOfVideos();
       //createMovieCorners();
-      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610);
+      relatedImagesScreen = new RelatedImages(59, 101,   998, 101,   59, 455,   998,455);
       totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);
       //playMovieCorners();
       hasOscVideo = true;

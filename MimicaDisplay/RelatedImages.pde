@@ -6,7 +6,8 @@ public class RelatedImages {
 
 
   RelatedImages(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-    t = 130;
+    //t = 130;
+     t = 230;
     x[0] = x1;
     x[1] = x2;
     x[2] = x3;

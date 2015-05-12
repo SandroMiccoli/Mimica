@@ -35,8 +35,9 @@ Words redoOrSubmitMenu;
 String menuChoice="";
 
 String wordsFolder = "data/activeWords/";
-//String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
-String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+String projectFolder = "C:/Users/JP/Desktop/DrawingMovie1/"; 
+//String projectFolder ="C:/Users/Espacodoconhecimento/Desktop/Mimica/Mimica/DrawingMovie/";
+//String projectFolder = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
 
 
 s states;

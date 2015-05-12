@@ -16,6 +16,8 @@ import fullscreen.*;
 SoftFullScreen fs; 
 
 VideoPlayer movieCenter;
+RelatedImages relatedImagesScreen;
+
 ArrayList<VideoPlayer> movieCorners = new ArrayList<VideoPlayer>();
 FindWordsAndVideos thisWordAndVideo;
 FindImages thisTotalImages;
@@ -28,8 +30,9 @@ boolean hasVideo;
 boolean hasOscVideo;
 
 
-String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
-//String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
+//String absolutePath = "/Users/sandromiccoli/Dropbox/Hacklab/Processing/Sketches/projetos/mimica/Mimica/MimicaCreator/"; 
+//String absolutePath ="C:/Users/Espacodoconhecimento/Desktop/Mimica/Mimica/DrawingMovie/";
+String absolutePath = "C:/Users/JP/Desktop/DrawingMovie1/"; 
 String wordsFolder = "data/activeWords/";
 
 String[] states = {
@@ -41,10 +44,14 @@ String currentState = "displayVideoDataBase";
 
 int fps = 12;
 int timerMinutes = 60*1000; // value of the timer in minutes
+int totalImages;
 
 
-int wMovieCenter = 640;
-int hMovieCenter = 480;
+//int wMovieCenter = 640;
+//int hMovieCenter = 480;
+
+int wMovieCenter = 570;
+int hMovieCenter = 410;
 
 int wMovieCorners = 240;
 int hMovieCorners = 180;
@@ -55,10 +62,12 @@ int yMovieCenter ;
 
 void setup() {
 
-   xMovieCenter = displayWidth/2-wMovieCenter/2;
-   yMovieCenter = displayHeight/2-hMovieCenter/2;
+  //xMovieCenter = displayWidth/2-wMovieCenter/2;
+  //yMovieCenter = displayHeight/2-hMovieCenter/2;
 
- 
+  xMovieCenter = 359;
+  yMovieCenter = 287;
+
 
   size(3280, 768);
   // Create the fullscreen object
@@ -80,6 +89,7 @@ void setup() {
   //*******
 
   thisWordAndVideo = new FindWordsAndVideos();
+  thisTotalImages = new FindImages();
   //Every 1 minute, the program changes the video
   timer = new Timer(1*timerMinutes);
   timer.start();
@@ -97,3 +107,4 @@ void draw() {
     displayRecordedVideo ();
   }
 }
+

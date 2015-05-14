@@ -15,7 +15,9 @@ void oscEvent(OscMessage theOscMessage)
 {  
   try {
     // get the value as a string
-    oscMessage = URLDecoder.decode(theOscMessage.get(0).stringValue(), "UTF-8");
+    oscMessage = URLDecoder.decode(theOscMessage.get(0).stringValue(), "UTF-8"); // Test for Windows
+    println("Message received: "+theOscMessage.get(0).stringValue());
+    println("Received decoded: "+oscMessage);
   }
 
   catch(UnsupportedEncodingException ex)

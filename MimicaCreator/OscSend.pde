@@ -12,13 +12,15 @@ String outMessage;
 // Sends a message Osc with the directory and name of the video file you just saved
 void oscMessageToPlay() {
   OscMessage myMessage = new OscMessage ("");
-  try{
-  outMessage = URLEncoder.encode(capture.sendFileNameToPlay(), "UTF-8");
+  try {
+    outMessage = URLEncoder.encode(capture.sendFileNameToPlay(), "UTF-8");
+    println("Message sent: "+capture.sendFileNameToPlay());
+    println("Sent encoded: "+outMessage);
   }
-   catch(UnsupportedEncodingException ex)
-   { 
-        println(ex.getMessage());  
-   }
+  catch(UnsupportedEncodingException ex)
+  { 
+    println(ex.getMessage());
+  }
   myMessage.add(outMessage);
   oscP5.send(myMessage, myRemoteLocation);
 }

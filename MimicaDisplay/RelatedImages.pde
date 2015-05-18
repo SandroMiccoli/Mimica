@@ -7,7 +7,7 @@ public class RelatedImages {
 
   RelatedImages(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
     //t = 130;
-     t = 230;
+    t = 230;
     x[0] = x1;
     x[1] = x2;
     x[2] = x3;
@@ -19,10 +19,10 @@ public class RelatedImages {
     y[3] = y4;
   } 
 
-  void loadImages( String imgPath ) {
+  void loadImages( String imgPath, int [] randomImage ) {
     //get the first 4 imagens 
     for (int i = 0; i<4; i ++) {
-      imgsScreen[i] = loadImage(imgPath+i+".png");
+      imgsScreen[i] = loadImage(imgPath+ randomImage[i]+".png");
     }
   }
 
@@ -33,3 +33,4 @@ public class RelatedImages {
     }
   }
 }
+

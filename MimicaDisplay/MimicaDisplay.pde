@@ -59,6 +59,7 @@ int hMovieCorners = 180;
 int xMovieCenter ;
 int yMovieCenter ;
 
+int [] copyOfTheValues = new int [4];
 
 void setup() {
 

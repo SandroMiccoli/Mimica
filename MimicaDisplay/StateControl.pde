@@ -23,18 +23,21 @@ public void displayVideoDataBase () {
       movieCenter.playVideo();
       //createMovieCorners();
       //playMovieCorners();
-      relatedImagesScreen = new RelatedImages(59, 101,   998, 101,   59, 455,   998,455); //OK
+      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610); //OK
       totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);//OK
+      sortUniqueValues(totalImages);
+
+      println("totalImages"+ totalImages+ "    random images:"+ copyOfTheValues [0]+copyOfTheValues [1], copyOfTheValues [2], copyOfTheValues [3]);
       hasVideo = true;
     }
 
     movieCenter.displayVideo();
     //displayMovieCorners();
 
-    if ( totalImages>=4) {
-      relatedImagesScreen.loadImages( absolutePath+wordsFolder+thisWordAndVideo.word+"/");
+
+      relatedImagesScreen.loadImages( absolutePath+wordsFolder+thisWordAndVideo.word+"/", copyOfTheValues );
       relatedImagesScreen.dramImages();
-    }
+
 
     //if the timer runs out, calls another video to be displayed
     if (timer.isFinished()) {
@@ -73,8 +76,10 @@ public void displayRecordedVideo () {
       thisWordAndVideo.setWord(split(oscMessage, '/')[2]); // Instead of selecting random folder, must select folder from OSC message (problably a split string will solve that)
       thisWordAndVideo.getAmountOfVideos();
       //createMovieCorners();
-      relatedImagesScreen = new RelatedImages(59, 101,   998, 101,   59, 455,   998,455);
+      relatedImagesScreen = new RelatedImages(50, 30, 1200, 30, 50, 610, 1200, 610);
       totalImages = thisTotalImages.getTotalImages(absolutePath+wordsFolder+thisWordAndVideo.word);
+      sortUniqueValues(totalImages);
+      println("totalImages"+ totalImages+ "    random images:"+ copyOfTheValues [0]+copyOfTheValues [1], copyOfTheValues [2], copyOfTheValues [3]);
       //playMovieCorners();
       hasOscVideo = true;
     }
@@ -84,10 +89,10 @@ public void displayRecordedVideo () {
     //displayMovieCorners();
     //OK
     //OK
-    if ( totalImages>=4) {
-      relatedImagesScreen.loadImages( absolutePath+wordsFolder+split(oscMessage, '/')[2]+"/");
+ 
+      relatedImagesScreen.loadImages( absolutePath+wordsFolder+thisWordAndVideo.word+"/", copyOfTheValues );
       relatedImagesScreen.dramImages();
-    }
+ 
     //if the timer runs out, calls random video to be displayed
     if (timer.isFinished()) {
       movieCenter.killVideo();

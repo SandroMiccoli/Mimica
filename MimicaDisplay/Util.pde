@@ -6,11 +6,12 @@ void clearScreen() {
   updatePixels();
 }
 
-void sortUniqueValues(int maximumValue, int [] copyOfTheValues) {
+void sortUniqueValues(int maximumValue) {
 
   int [] checkedValues = new int [maximumValue];// marca qual numero ja foi sorteado
   int raffledValue; //valor sorteado 
   int totalDrawnValues = 0; //contador de slots preenchidos  
+
 
   do {
     //sorteia um número
@@ -20,12 +21,15 @@ void sortUniqueValues(int maximumValue, int [] copyOfTheValues) {
     if (checkedValues[raffledValue]==0) {
       checkedValues[raffledValue] = 1;
 
+      copyOfTheValues [ totalDrawnValues] = raffledValue;
       totalDrawnValues++;
 
       //copia o valor sorteado em uma variavel auxiliar 
-      copyOfTheValues[maximumValue-1] = raffledValue;
+
+      //copyOfTheValues[maximumValue-1] = raffledValue;
     }
-  } 
+  }
+
   while (totalDrawnValues<4);
 }
 
@@ -80,7 +84,7 @@ void keyPressed() {
   }
 
   if (key=='p') {
-      println("*********MOVIES PROPETIES**********");
+    println("*********MOVIES PROPETIES**********");
     println(  "MovieCenter position: " + xMovieCenter+","+ yMovieCenter);
     println("MovieCenter sizes: " +   wMovieCenter +","+   hMovieCenter);
     println(  "MovieCorners 1 position: "+ int(movieCorners.get(0).pos.x)+"," +int(movieCorners.get(0).pos.y));
@@ -88,7 +92,7 @@ void keyPressed() {
     println(  "MovieCorners 3 position: "+ int(movieCorners.get(2).pos.x)+"," +int(movieCorners.get(2).pos.y));
     println(  "MovieCorners 4 position: "+ int(movieCorners.get(3).pos.x)+"," +int(movieCorners.get(3).pos.y));
     println("MovieCorners sizes: " +   wMovieCorners +","+   hMovieCorners);
-      println("***********************************");
+    println("***********************************");
   }
 }
 
